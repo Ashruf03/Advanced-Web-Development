@@ -1,21 +1,41 @@
-// use prisma-8
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum NewsletterStatus {
+  Draft
+  Schedule
+  Sent
+}
 
 model User {
-  id        Int                @id @default(autoincrement())
-  email     String             @unique
-  username  String?
-  name      String?
-  posts     Post[]
-  createdAt DateTime           @default(now()) @onCreate(now())
-  updatedAt temporal.UpdatedAt
+  id          String       @id @default(cuid())
+  email       String       @unique
+  name        String?
+  password    String?
+  newsletters Newsletter[]
+
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
 }
 
-model Post {
-  id        Int                @id @default(autoincrement())
+model Newsletter {
+  id        String           @id @default(cuid())
   title     String
-  content   String?
-  author    User               @relation(fields: [authorId], references: [id])
-  authorId  Int
-  createdAt DateTime           @default(now()) @onCreate(now())
-  updatedAt temporal.UpdatedAt
+  content   String           @db.Text
+  image     String           @db.Text
+  status    NewsletterStatus @default(Draft)
+
+  authorId  String
+  author    User             @relation(fields: [authorId], references: [id])
+
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
 }
+
