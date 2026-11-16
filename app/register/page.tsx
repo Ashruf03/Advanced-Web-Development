@@ -1,31 +1,34 @@
 export default function RegisterPage() {
   return (
-    <main className="mx-auto max-w-xl p-8">
-      <h1 className="text-3xl font-bold">
+    <main className="flex min-h-[80vh] flex-col items-center justify-center bg-base-200">
+
+
+      <form className="card bg-base-100 shadow-xl w-full max-w-md p-4 translate-y-10">
+        <h1 className="text-3xl font-bold">
         Create an Account
-      </h1>
-      <form>
-        <label htmlFor="name" className="block">
+        </h1>
+
+        <label htmlFor="name" className="block mb-1">
           Full name (optional)
         </label>
-        <input id="name" name="name" type="text" placeholder="Ashruf Guenaoui" />
+        <input className="input w-full focus:outline-hidden focus:border-primary mb-2"id="name" name="name" type="text" placeholder="Ashruf Guenaoui" />
         
-        <label htmlFor="email" className="block">
+        <label htmlFor="email" className="block mb-1">
           Email Address
         </label>
-        <input id="email" name="email" type="text" placeholder="ashruf@example.com" />
+        <input className="input w-full focus:outline-hidden focus:border-primary mb-2"id="email" name="email" type="email" placeholder="ashruf@example.com" />
 
-        <label htmlFor="password" className="block">
+        <label htmlFor="password" className="block mb-1">
           Password
         </label>
-        <input id="password" name="password" type="text" placeholder="••••••••" />
+        <input className="input w-full focus:outline-hidden focus:border-primary mb-2"id="password" name="password" type="password" placeholder="••••••••" />
 
-        <label htmlFor="confirmed_password" className="block">
+        <label htmlFor="confirmed_password" className="block mb-1">
           Confirm Password
         </label>
-        <input id="confirmed_password" name="confirmed_password" type="text" placeholder="••••••••" />
+        <input className="input w-full focus:outline-hidden focus:border-primary mb-2"id="confirmed_password" name="confirmed_password" type="password" placeholder="••••••••" />
 
-        <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl block" >
+        <button className="btn btn-primary mt-4 w-full" type="button">
           Create Account
         </button>
 
