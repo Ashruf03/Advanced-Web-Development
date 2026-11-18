@@ -93,7 +93,7 @@ export default function RegisterPage() {
         </label>
         <input className="input w-full focus:outline-hidden focus:border-primary mb-2"id="confirmed_password" name="confirmed_password" required minLength={15} type="password" placeholder="••••••••" autoComplete="new-password"/>
 
-        {loading || msgType === "success" && (
+        {(loading || msgType === "success") && (
           <button className="btn btn-primary mt-4 w-full" type="button" disabled>
             <span className="loading loading-spinner"></span>
             Creating Account...
