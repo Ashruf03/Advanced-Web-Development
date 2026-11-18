@@ -42,7 +42,7 @@ export default function RegisterPage() {
         setMsg(result.message);
         setMsgType("success");
         // redirect to the login page after a short delay
-        setTimeout(() => {router.push("/login")}, 1000);
+        setTimeout(() => {router.replace("/login")}, 1000);
       }
       else{
         setMsg(result.error);
@@ -93,14 +93,14 @@ export default function RegisterPage() {
         </label>
         <input className="input w-full focus:outline-hidden focus:border-primary mb-2"id="confirmed_password" name="confirmed_password" required minLength={15} type="password" placeholder="••••••••" autoComplete="new-password"/>
 
-        {loading && (
+        {loading || msgType === "success" && (
           <button className="btn btn-primary mt-4 w-full" type="button" disabled>
             <span className="loading loading-spinner"></span>
             Creating Account...
           </button>
         )}
 
-        {!loading && (
+        {!loading && msgType !== "success" && (
           <button className="btn btn-primary mt-4 w-full" type="submit">
             Create Account
           </button>
